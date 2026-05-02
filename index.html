@@ -1158,7 +1158,8 @@ tap.addEventListener('touchmove',e=>{
 },{passive:false});
 tap.addEventListener('touchend',e=>{e.preventDefault();if(e.changedTouches.length===0)return;const tx2=e.changedTouches[0].clientX,ty2=e.changedTouches[0].clientY;if(e.touches.length===0){tPinch=false;if(drag&&Math.abs(tx2-downX)<16&&Math.abs(ty2-downY)<16&&Date.now()-downT<400){const now=Date.now();if(now-lastTapT<380&&Math.abs(tx2-lastTapX)<40&&Math.abs(ty2-lastTapY)<40)flyTo(tx2,ty2);else pickAt(tx2,ty2);lastTapT=now;lastTapX=tx2;lastTapY=ty2;}drag=false;}},{passive:false});
 window.addEventListener('keydown',e=>{
-  if(document.activeElement===document.getElementById('search-input'))return;
+const ae = document.activeElement;
+  if(ae && (ae.tagName==='INPUT'||ae.tagName==='TEXTAREA'))return;
   if(e.key==='Escape'){
     if(searchOpen){toggleSearch();return;}
     if(document.getElementById('help-overlay').classList.contains('on')){toggleHelp();return;}
