@@ -1648,7 +1648,7 @@ function onHands(res){
 //     res.json(await r.json());
 //   };
 // Then set ISS_PROXY = '/api/iss' below. Leave empty string to use direct API (works locally).
-const ISS_PROXY = '';
+const ISS_PROXY = '/api/iss';
 let lastISSData=null;
 async function fetchISS(){
   const url = ISS_PROXY || 'https://api.wheretheiss.at/v1/satellites/25544';
